@@ -1,9 +1,5 @@
 package com.usecase.controller;
 
-import com.usecase.dto.Book;
-import com.usecase.dto.User;
-import com.usecase.service.LibraryService;
-
 import java.util.List;
 import java.util.Map;
 
@@ -17,12 +13,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.usecase.dto.Book;
+import com.usecase.dto.User;
+import com.usecase.service.LibraryService;
+
 @RestController
 @RequestMapping("/api")
 public class LibraryController {
     
+	/* old approach
     @Autowired
-    LibraryService libraryService;
+    LibraryServiceRest libraryService;
+    */
+	
+	@Autowired
+	LibraryService libraryService;
     
     @GetMapping("/library")
     public List<User> getLibrary(){
@@ -89,4 +94,5 @@ public class LibraryController {
         libraryService.deleteBookUserRel(user_id, book_id);
         return "Book removed from Users Name";
     }
+    
 }
